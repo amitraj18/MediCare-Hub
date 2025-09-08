@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Book appointment</h2>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+  <form method="post">{% csrf_token %}
+    <label>Doctor
+      <select name="doctor_id">
+        {% for d in doctors %}
+          <option value="{{ d.id }}">{{ d.get_full_name }} ({{ d.username }})</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Starts at (ISO format: YYYY-MM-DDThh:mm:ss)
+      <input name="starts_at" />
+    </label>
+    <button type="submit">Book</button>
+  </form>
+{% endblock %}

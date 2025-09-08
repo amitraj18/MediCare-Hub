@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>My Appointments</h2>
+  <a href="{% url 'book_appointment' %}">Book new</a>
+  <ul>
+    {% for appt in appointments %}
+      <li>{{ appt.starts_at }} with Dr {{ appt.doctor.get_full_name }} - <a href="{% url 'cancel_appointment' appt.pk %}">Cancel</a></li>
+    {% empty %}
+      <li>No appointments</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

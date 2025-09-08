@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Cancel appointment</h2>
+  <p>Are you sure you want to cancel appointment at {{ appointment.starts_at }} with Dr {{ appointment.doctor.get_full_name }}?</p>
+  <form method="post">{% csrf_token %}
+    <button type="submit">Yes, cancel</button>
+    <a href="{% url 'patient_appointments' %}">No, go back</a>
+  </form>
+{% endblock %}

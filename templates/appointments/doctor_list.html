@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Doctor's view</h2>
+  {% if patients %}
+    <h3>Patients</h3>
+    <ul>
+      {% for p in patients %}
+        <li>{{ p.get_full_name }} ({{ p.username }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% if appointments %}
+    <h3>Appointments</h3>
+    <ul>
+      {% for a in appointments %}
+        <li>{{ a.starts_at }} with {{ a.patient.get_full_name }} ({{ a.patient.username }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
